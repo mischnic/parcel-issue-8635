@@ -1,0 +1,39 @@
+{
+  "app": "dist/app/index.html",
+  "electron-renderer": "./dist/launcher/renderer/index.html",
+  "electron-main": "./dist/launcher/main/main.js",
+  "electron-preload": "./dist/launcher/preload/preload.js",
+  "targets": {
+    "app": {
+      "engines": {
+        "browsers": "> 0.25%"
+      },
+      "context": "browser",
+      "isLibrary": false,
+      "distDir": "./dist/app"
+    },
+    "electron-preload": {
+      "context": "electron-main",
+      "distDir": "./dist/launcher/preload"
+    },
+    "electron-main": {
+      "context": "electron-main",
+      "distDir": "./dist/launcher/main"
+    },
+    "electron-renderer": {
+      "context": "browser",
+      "distDir": "./dist/launcher/renderer",
+      "isLibrary": false,
+      "publicUrl": ".",
+      "engines": {
+        "browsers": "> 0.25%"
+      }
+    }
+  },
+  "scripts": {
+    "start": "parcel serve src/app/index.html --target app --dist-dir dist/app --port 1234 --no-cache"
+  },
+  "dependencies": {
+    "parcel": "^2.8.0"
+  }
+}
